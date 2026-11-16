@@ -3,45 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#d8384f">
+<meta name="theme-color" content="#6F52B5">
 <meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
 <meta name="referrer" content="no-referrer">
 <title>A little question</title>
 <style>
-/* ---------- THEME: Terracotta Warm ----------
-   Cloud Dancer off-white base (Pantone 2026) with terracotta + warm amber.
-   Warm and friendly without the bridal read of a dusty-rose palette.
-   --ink/--mute/--pri/--pri2 are WCAG-AA verified; --blush/--clay/--gold/--sage
-   are decorative only (no text sits on them). */
+/* ---------- THEME: Lavender Mist ----------
+   Soft lilac base, violet primary, orchid-rose secondary, warm gold accent.
+   --ink/--mute/--pri/--pri2 are WCAG-AA verified; blush/clay/gold/sage are decorative. */
 :root{
-  --bg1:#FAF6F1; --bg2:#F6EADF; --bg3:#F0DFD1;
-  --card:#FFFDFA; --ink:#3A2A23; --mute:#7D6554;
-  --pri:#B2543A; --pri2:#A16B2A;
-  --blush:#E8A98C; --clay:#CF7A4F; --gold:#C79A52; --sage:#8E9E78;
-  --pri-ink:#FFFFFF; --soft:#FBE8DC; --line:#EBD6C2;
-  --shadow:0 14px 40px rgba(88,58,44,.11);
-  --ring:rgba(178,84,58,.17);
+  --bg1:#F8F5FC; --bg2:#EFE9F8; --bg3:#E6DEF3;
+  --card:#FEFDFF; --ink:#2E2640; --mute:#6A6280;
+  --pri:#6F52B5; --pri2:#B24F80;
+  --blush:#D9C3EE; --clay:#E8A9C2; --gold:#E2BE86; --sage:#A9C4B4;
+  --pri-ink:#FFFFFF; --soft:#F0EAF9; --line:#E2D9F0;
+  --shadow:0 14px 40px rgba(70,50,120,.12);
+  --ring:rgba(111,82,181,.17);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg1:#17120F; --bg2:#1F1814; --bg3:#261D18;
-    --card:#221A16; --ink:#F6EAE0; --mute:#BFA694;
-    --pri:#E8886A; --pri2:#E0A75C;
-    --blush:#D9957A; --clay:#D08756; --gold:#D9B56F; --sage:#A3B389;
-    --pri-ink:#2A1410; --soft:#2E2219; --line:#403026;
+    --bg1:#14111C; --bg2:#1A1624; --bg3:#211C2D;
+    --card:#1C1826; --ink:#F1ECFA; --mute:#B5ACCB;
+    --pri:#B79CF2; --pri2:#F0A3C0;
+    --blush:#9C84C8; --clay:#D68AA8; --gold:#D9B87E; --sage:#9DB8A6;
+    --pri-ink:#1B1230; --soft:#272133; --line:#38304A;
     --shadow:0 14px 40px rgba(0,0,0,.5);
-    --ring:rgba(232,136,106,.18);
+    --ring:rgba(183,156,242,.18);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg1:#17120F; --bg2:#1F1814; --bg3:#261D18;
-  --card:#221A16; --ink:#F6EAE0; --mute:#BFA694;
-  --pri:#E8886A; --pri2:#E0A75C;
-  --blush:#D9957A; --clay:#D08756; --gold:#D9B56F; --sage:#A3B389;
-  --pri-ink:#2A1410; --soft:#2E2219; --line:#403026;
+  --bg1:#14111C; --bg2:#1A1624; --bg3:#211C2D;
+  --card:#1C1826; --ink:#F1ECFA; --mute:#B5ACCB;
+  --pri:#B79CF2; --pri2:#F0A3C0;
+  --blush:#9C84C8; --clay:#D68AA8; --gold:#D9B87E; --sage:#9DB8A6;
+  --pri-ink:#1B1230; --soft:#272133; --line:#38304A;
   --shadow:0 14px 40px rgba(0,0,0,.5);
-  --ring:rgba(232,136,106,.18);
+  --ring:rgba(183,156,242,.18);
   color-scheme:dark;
 }
 
@@ -234,7 +232,7 @@ textarea{width:100%;height:120px;border-radius:14px;border:1px solid var(--line)
    - encrypted : PAYLOAD is set, key comes from the #k= fragment
    - plaintext : video path is used directly (local testing)
    ========================================================= */
-var PAYLOAD="oPfJ1rytdGuU0BFbQTUqDp7hSNFGIWqLdJlVkfhF2PC/n/HDsMyRphua2YCyfsonO3O9sUlaFKvMVibzTxhG0g44+bj67A==";
+var PAYLOAD="HVXdJDMZ0AlK4pPkgxO8dk/CA0IJNh56kWR9cu5yi/ueGo+k8ZcjM8NE1LR2JiIfCU8oupETB0Q8ylKFMZLfgaiLEGOwXQ==";
 var MAX_OPENS=0;          /* soft, client-side only */
 
 var $=function(i){return document.getElementById(i)};
@@ -411,7 +409,7 @@ function show(id){
   window.scrollTo(0,0);
 }
 function rain(){
-  var e=["🌸","✨","🤍","🌿","☕","💐","🕊️"];
+  var e=["💜","🌸","✨","🦋","🤍","☕","💐"];
   for(var i=0;i<38;i++){
     var d=document.createElement("div");d.className="fall";d.textContent=e[i%e.length];
     d.style.left=Math.random()*100+"vw";d.style.animationDelay=Math.random()*.9+"s";
