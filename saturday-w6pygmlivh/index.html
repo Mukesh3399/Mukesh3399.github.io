@@ -234,8 +234,8 @@ textarea{width:100%;height:120px;border-radius:14px;border:1px solid var(--line)
    - encrypted : PAYLOAD is set, key comes from the #k= fragment
    - plaintext : video path is used directly (local testing)
    ========================================================= */
-var PAYLOAD="12D52pYg/KLSzdUFTkO2AOddmECNiAbyZ7+4SpJSHDmzGBRptsx/iHfECWcV9lg9sg1mv9aXs2pLD87OXw9WJvSJYMg5kQ==";
-var MAX_OPENS=3;          /* soft, client-side only */
+var PAYLOAD="oPfJ1rytdGuU0BFbQTUqDp7hSNFGIWqLdJlVkfhF2PC/n/HDsMyRphua2YCyfsonO3O9sUlaFKvMVibzTxhG0g44+bj67A==";
+var MAX_OPENS=0;          /* soft, client-side only */
 
 var $=function(i){return document.getElementById(i)};
 var buzz=function(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
@@ -537,6 +537,8 @@ function unlock(){
   if(!(window.crypto&&window.crypto.subtle)){
     return gateFail("Can’t open here","Open this link in Chrome over https.","🌐");
   }
+  /* escape hatch for testing: append &reset=1 to the link */
+  if(URLCFG.reset){try{localStorage.removeItem("satOpens");sessionStorage.removeItem("satCounted")}catch(e){}}
   /* soft, bypassable open counter */
   if(MAX_OPENS>0){
     var used=0,already=false;
@@ -544,7 +546,7 @@ function unlock(){
     try{already=sessionStorage.getItem("satCounted")==="1"}catch(e){}
     if(!already){
       if(used>=MAX_OPENS){
-        return gateFail("This link has expired","It was a one-time invite and it’s already been opened.","⌛");
+        return gateFail("Already opened","This invite was set to open "+MAX_OPENS+" times and it has. Ask for a fresh link 🙊","⌛");
       }
       try{localStorage.setItem("satOpens",String(used+1))}catch(e){}
       try{sessionStorage.setItem("satCounted","1")}catch(e){}
@@ -573,7 +575,7 @@ function unlock(){
     $("g-barfill").style.width="100%";
     setTimeout(boot,180);
   }).catch(function(){
-    gateFail("This link has expired","The key doesn’t match, or the link is no longer valid.","⌛");
+    gateFail("This link didn’t work","The code at the end of the link looks wrong — check the whole thing got copied.","🔗");
   });
 }
 
