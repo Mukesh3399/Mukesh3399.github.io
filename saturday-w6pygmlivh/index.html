@@ -231,14 +231,28 @@ textarea{width:100%;height:120px;border-radius:14px;border:1px solid var(--line)
 </section>
 
 </main>
+<!-- Your name + number live in config.js, NOT in this file. Edit that one. -->
+<script src="config.js"></script>
 <script>
-/* ============ EDIT THESE THREE ============ */
+/* Config comes from (highest priority first):
+   1. the URL  -> .../#me=Mukesh&ph=919876543210
+   2. config.js -> window.SAT_CFG
+   3. defaults below                                          */
+var URLCFG=(function(){
+  var o={},s=(location.hash||"").replace(/^#/,"");
+  if(!s)s=(location.search||"").replace(/^\?/,"");
+  s.split("&").forEach(function(kv){
+    var p=kv.split("=");
+    if(p[0])try{o[decodeURIComponent(p[0])]=decodeURIComponent(p[1]||"")}catch(e){}
+  });
+  return o;
+})();
+var EXT=(typeof window!=="undefined"&&window.SAT_CFG)||{};
 var CFG={
-  her:"Varshini",
-  me:"",          /* your name */
-  phone:""     /* your WhatsApp number, country code + number, no + or spaces. e.g. 919876543210 */
+  her:   URLCFG.her   || EXT.her   || "Varshini",
+  me:    URLCFG.me    || EXT.me    || "",
+  phone:(URLCFG.ph    || URLCFG.phone || EXT.phone || "").replace(/[^0-9]/g,"")
 };
-/* ========================================== */
 
 var $=function(i){return document.getElementById(i)};
 var buzz=function(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
